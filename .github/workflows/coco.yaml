@@ -46,8 +46,8 @@ jobs:
       - name: Running Scanner
         run: |
           cat urls.txt
-          #for i in $(cat urls.txt); do katana -u $i -aff -H -jc -d 7 -proxy http://127.0.0.1:7777; done
-          katana -u "http://testasp.vulnweb.com" -aff -H -jc -d 7 
+          for i in $(cat urls.txt); do katana -u $i -aff -H -jc -d 7 -proxy http://127.0.0.1:7777; done
+          #katana -u "http://testasp.vulnweb.com" -aff -H -jc -d 7 
           cat test.json
         shell: bash
 
