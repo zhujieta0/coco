@@ -42,8 +42,11 @@ jobs:
 
           ./xray
           /usr/bin/nohup ./xray webscan --plugins xss,sqldet --listen 127.0.0.1:7777  --json-output xray.json &
-
-          set +e ;for i in $(cat urls.txt); do katana -u $i -aff -H -jc -d 7 -proxy http://127.0.0.1:7777; done
+        shell: bash
+        
+      - name: Running Scanner
+        run: |
+          for i in $(cat urls.txt); do katana -u $i -aff -H -jc -d 7 -proxy http://127.0.0.1:7777; done
           cat xray.json
         shell: bash
 
