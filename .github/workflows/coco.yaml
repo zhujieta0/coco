@@ -40,7 +40,7 @@ jobs:
           mv xray_linux_amd64 xray
 
           ./xray
-          /usr/bin/nohup ./xray webscan --plugins xss,sqldet --listen 127.0.0.1:7777  --json-output test.json &
+          /usr/bin/nohup ./xray webscan --plugins xss,sqldet --listen 127.0.0.1:7777  --html-output test.html &
         shell: bash
         
       - name: Running Scanner
@@ -58,7 +58,7 @@ jobs:
 
       - name: Create local changes
         run: |
-          git add test.json
+          git add test.html
       - name: Commit results to Github
         run: |
           git config --local user.email "jinbao1986@qq.com"
