@@ -40,25 +40,25 @@ jobs:
           mv xray_linux_amd64 xray
 
           ./xray
-          /usr/bin/nohup ./xray webscan --plugins xss,sqldet --listen 127.0.0.1:7777  --json-output xray.json &
+          /usr/bin/nohup ./xray webscan --plugins xss,sqldet --listen 127.0.0.1:7777  --json-output test.json &
         shell: bash
         
       - name: Running Scanner
         run: |
           cat urls.txt
           #for i in $(cat urls.txt); do katana -u $i -aff -H -jc -d 7 -proxy http://127.0.0.1:7777; done
-          katana -u "http://testasp.vulnweb.com" -aff -H -jc -d 7 -proxy http://127.0.0.1:7777
-          cat xray.json
+          katana -u "http://testasp.vulnweb.com" -aff -H -jc -d 7 
+          cat test.json
         shell: bash
 
       - name: Sorting the output results
         run: |
-          find xray.json -type f -exec sort {} -o {} \;
+          find test.json -type f -exec sort {} -o {} \;
         shell: bash
 
       - name: Create local changes
         run: |
-          git add xray.json
+          git add test.json
       - name: Commit results to Github
         run: |
           git config --local user.email "jinbao1986@qq.com"
