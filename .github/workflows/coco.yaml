@@ -1,51 +1,67 @@
-name: Share data between jobs
+name: KNK
 
-on: [push]
-
+on:
+    workflow_dispatch:
 jobs:
-  job_1:
-    name: Add 3 and 7
+  build:
     runs-on: ubuntu-latest
     steps:
-      - shell: bash
-        run: |
-          expr 3 + 7 > math-homework.txt
-      - name: Upload math result for job 1
-        uses: actions/upload-artifact@v3
-        with:
-          name: homework
-          path: math-homework.txt
+      - name: Checkout Repo
+        uses: actions/checkout@master
 
-  job_2:
-    name: Multiply by 9
-    needs: job_1
-    runs-on: windows-latest
-    steps:
-      - name: Download math result for job 1
-        uses: actions/download-artifact@v3
+      - name: Setup golang
+        uses: actions/setup-go@v2
         with:
-          name: homework
-      - shell: bash
-        run: |
-          value=`cat math-homework.txt`
-          expr $value \* 9 > math-homework.txt
-      - name: Upload math result for job 2
-        uses: actions/upload-artifact@v3
-        with:
-          name: homework
-          path: math-homework.txt
+          go-version: 1.18
 
-  job_3:
-    name: Display results
-    needs: job_2
-    runs-on: macOS-latest
-    steps:
-      - name: Download math result for job 2
-        uses: actions/download-artifact@v3
+      - name: Setup Dependencies
+        run: |
+          nohup --version
+          sudo apt-get update
+          sudo apt-get install libpcap-dev 
+          #sudo apt-get install nohup
+      - name: Cache Go
+        id: cache-go
+        uses: actions/cache@v2
         with:
-          name: homework
-      - name: Print the final result
+          path: /home/runner/go
+          key: ${{ runner.os }}-go
+
+      - name: Setting up ProjectDiscovery tools
+        env:
+          GO111MODULE: on
+        run: |
+          go install -v github.com/projectdiscovery/katana/cmd/katana@latest
+
+
+      - name: KAK listen
+        run: |
+          wget https://github.com/chaitin/xray/releases/download/1.9.3/xray_linux_amd64.zip
+          unzip xray_linux_amd64.zip
+          mv xray_linux_amd64 xray
+
+          ./xray
+          /usr/bin/nohup ./xray webscan --plugins xss,sqldet --listen 127.0.0.1:7777  --json-output xray.json &
+
+          set +e ;for i in $(cat urls.txt); do katana -u $i -aff -H -jc -d 7 -proxy http://127.0.0.1:7777; done
+          cat xray.json
         shell: bash
+
+      - name: Sorting the output results
         run: |
-          value=`cat math-homework.txt`
-          echo The result is $value
+          find xray.json -type f -exec sort {} -o {} \;
+        shell: bash
+
+      - name: Create local changes
+        run: |
+          git add xray.json
+      - name: Commit results to Github
+        run: |
+          git config --local user.email "jinbao1986@qq.com"
+          git config --global user.name "TNT"
+          git commit -m "InCloud Report" -a --allow-empty
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
