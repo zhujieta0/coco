@@ -54,7 +54,7 @@ jobs:
 
       - name: Sorting the output results
         run: |
-          find test.html -type f -exec sort {} -o {} \;
+          find test.json -type f -exec sort {} -o {} \;
         shell: bash
 
       - name: Create local changes
