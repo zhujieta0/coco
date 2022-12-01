@@ -18,7 +18,8 @@ jobs:
         run: |
           nohup --version
           sudo apt-get update
-          sudo apt-get install libpcap-dev 
+          sudo apt-get install libpcap-dev
+          rm -rf test.html
       - name: Cache Go
         id: cache-go
         uses: actions/cache@v2
@@ -48,12 +49,12 @@ jobs:
           cat urls.txt
           for i in $(cat urls.txt); do katana -u $i -aff -H -jc -d 7 -proxy http://127.0.0.1:7777; done
           #katana -u "http://testasp.vulnweb.com" -aff -H -jc -d 7 
-          cat test.json
+          cat test.html
         shell: bash
 
       - name: Sorting the output results
         run: |
-          find test.json -type f -exec sort {} -o {} \;
+          find test.html -type f -exec sort {} -o {} \;
         shell: bash
 
       - name: Create local changes
