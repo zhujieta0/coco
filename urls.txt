@@ -1,12 +1,1 @@
-https://newfs.sist.org.cn/trace/ent/
-https://newfs.sist.org.cn/trace/entpc/
-https://newfs.sist.org.cn/trace/mgr/
-https://newfs.sist.org.cn/trace/mgrpc/
-https://newfs.sist.org.cn/trace/api
-https://storage.sist.org.cn/storage/ent/
-https://storage.sist.org.cn/storage/entpc/
-https://storage.sist.org.cn/storage/mgr/
-https://storage.sist.org.cn/storage/mgrpc/
-https://storage.sist.org.cn/storage/api
-https://udi.sist.org.cn/
-https://mwtrace.sist.org.cn/mwtrace/mwpc/#/dashboard/analysis
+http://testphp.vulnweb.com/
