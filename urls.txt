@@ -1,2 +1,1 @@
-https://sendgrid.com
-http://testaspnet.vulnweb.com
+https://mc.sendgrid.com
