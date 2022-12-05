@@ -1,6 +1,1 @@
-http://artists.soundcloud.com/
-https://mix.monash.edu
-https://mix-qat.monash.edu
-https://mix-dev.monash.edu
-https://constantcontact.com
-https://api.foxycart.com
+https://www.flickr.com
