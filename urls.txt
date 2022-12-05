@@ -1,2 +1,6 @@
-https://admin.foxycart.com
-https://foxycart-demo.foxycart.com
+http://artists.soundcloud.com/
+https://mix.monash.edu
+https://mix-qat.monash.edu
+https://mix-dev.monash.edu
+https://constantcontact.com
+https://api.foxycart.com
