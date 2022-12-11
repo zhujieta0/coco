@@ -1,2 +1,4 @@
-http://web.uphabit.com
-https://web.uphabit.com
+api.bitwarden.com
+identity.bitwarden.com
+vault.bitwarden.com
+help.bitwarden.com
