@@ -1,4 +1,8 @@
-http://volk.is
-http://volk.is:8080
-https://volk.is
-https://volk.is:8443
+http://api.zerobounce.in
+http://api.zerobounce.in:8080
+http://api.zerobounce.in:8443
+http://zerobounce.in
+http://zerobounce.in:8080
+https://api.zerobounce.in
+https://zerobounce.in
+https://zerobounce.in:8443
