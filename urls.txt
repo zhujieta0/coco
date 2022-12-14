@@ -1,8 +1,2 @@
-http://api.zerobounce.in
-http://api.zerobounce.in:8080
-http://api.zerobounce.in:8443
-http://zerobounce.in
-http://zerobounce.in:8080
-https://api.zerobounce.in
-https://zerobounce.in
-https://zerobounce.in:8443
+http://try.discourse.org
+https://try.discourse.org
