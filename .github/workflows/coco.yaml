@@ -38,7 +38,7 @@ jobs:
           mv xray_linux_amd64 xray
 
           ./xray
-          /usr/bin/nohup ./xray webscan --plugins xss,sqldet,xxe,ssrf --listen 127.0.0.1:7777  --html-output test.html &
+          /usr/bin/nohup ./xray webscan --plugins xss,sqldet,xxe,cmd-injection,upload,path-traversal,dirscan,redirect,jsonp --listen 127.0.0.1:7777  --html-output test.html &
         shell: bash
         
       - name: Running Scanner
