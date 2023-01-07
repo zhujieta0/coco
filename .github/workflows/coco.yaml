@@ -42,7 +42,7 @@ jobs:
         shell: bash
         
       - name: Running Scanner
-        timeout-minutes: 2
+        timeout-minutes: 340
         continue-on-error: true
         run: |
           cat urls.txt
