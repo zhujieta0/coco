@@ -42,6 +42,7 @@ jobs:
         shell: bash
         
       - name: Running Scanner
+        timeout-minutes: 10
         run: |
           cat urls.txt
           for i in $(cat urls.txt); do katana -u $i -cs ${i#*//} -aff -H -jc -d 7 -proxy http://127.0.0.1:7777; done
