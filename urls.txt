@@ -265,7 +265,6 @@ http://content-cdn.dell.com
 http://b2boas2.dell.com
 https://penpwftaprox01.ap.dell.com
 https://dsgdownloads.dell.com
-https://dell.com.br
 https://pc102gw.corp.connect.dell.com
 https://dell.com.bs
 https://gdi.dell.com
@@ -276,7 +275,6 @@ http://dell.com.edgekey.net
 http://dellsolutionsvr.dell.com:7547
 http://snpi.dell.com
 https://ngssoproddurgtm.ins.dell.com
-http://linux.dell.com
 http://res.cn.business.dell.com
 https://gscv-pc1.us.dell.com
 https://ebissrs.dell.com
