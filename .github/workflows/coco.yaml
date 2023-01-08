@@ -19,9 +19,9 @@ jobs:
 
       - name: Setup Dependencies
         run: |
-          nohup --version
-          sudo apt-get update
-          sudo apt-get install libpcap-dev
+          #nohup --version
+          #sudo apt-get update
+          #sudo apt-get install libpcap-dev
           rm -rf test.html
           cat urls.txt |sort|uniq|tee urls.txt
 
