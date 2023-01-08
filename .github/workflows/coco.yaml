@@ -48,13 +48,8 @@ jobs:
         run: |
           for i in $(cat urls.txt); do katana -u $i -cs ${i#*//} -aff -H -jc -d 7 -proxy http://127.0.0.1:7777; done
           #katana -u "http://testasp.vulnweb.com" -aff -H -jc -d 7 
-          cat test.html
         shell: bash
 
-      - name: Sorting the output results
-        run: |
-          find test.json -type f -exec sort {} -o {} \;
-        shell: bash
 
       - name: Create local changes
         run: |
